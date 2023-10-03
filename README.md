@@ -5,6 +5,7 @@
 
 This script runs in the background and watches your downloads folder. Whenever an arXiv article is downloaded, it is renamed according to custom
 logic and moved to a directory you specify. 
+
 ------------------------------------------------------------------------------------------------------
 
 ## Default Renaming Scheme
@@ -17,6 +18,7 @@ Examples:
 1. https://arxiv.org/abs/1910.06441 -> "vig-the-wave-trace-and-birkhoff-billiards.pdf"
 1. https://arxiv.org/abs/2106.12017 -> "mccleerey-pluri-supported-currents-on-compact-kahler-manifolds.pdf"
 1. https://arxiv.org/abs/1706.03762 -> "vaswani-shazeer-parmar-attention-is-all-you-need.pdf"
+
 ------------------------------------------------------------------------------------------------------
 
 ## Setup
@@ -26,6 +28,7 @@ Examples:
     - Change TARGET_DIR to the absolute path of the directory you want your papers to be stored.
 2. Open arXivdaemon.bat and make sure the path to this project directory is correct
 3. Place arXivdaemon.bat in your startup scripts.
+
 ------------------------------------------------------------------------------------------------------
 ## Potential Issues
 
@@ -35,6 +38,7 @@ Older arxiv articles have a naming convention which will currently be missed by 
 1. XXXX.XXXX
 
 Where 'X' is any digit. Some older articles have ids in the form arch-ive/XXXXXXX and these are not currently captured.
+
 ------------------------------------------------------------------------------------------------------
 
 ## TODO:
