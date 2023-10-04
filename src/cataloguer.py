@@ -1,4 +1,6 @@
 import arxiv
+import time
+import os
 from watchdog.events import FileSystemEventHandler
 import regex
 from pathlib import Path
@@ -23,6 +25,7 @@ class ArXivPaperCataloguer(FileSystemEventHandler):
             for the paper metadata based on this id, creates the new file name and moves it to
             the config.TARGET_DIR.
         """
+        time.sleep(1)
         if event.is_directory:
             return None
 
@@ -33,12 +36,12 @@ class ArXivPaperCataloguer(FileSystemEventHandler):
 
         if not id:
             return None
-
-        new_name = self.get_file_name(
-            id
-        )  ## Retrieves metadata and formats new filename
-        new_path = Path(self.target_dir) / Path(new_name)
-        path.rename(new_path)
+        else:
+            new_name = self.get_file_name(
+                id
+            )  ## Retrieves metadata and formats new filename
+            new_path = Path(self.target_dir) / Path(new_name)
+            path.rename(new_path)
 
     def is_arxiv(self, path):
         """Determines if a path represents a downloaded pdf of an arXiv paper.
