@@ -37,7 +37,7 @@ Step 3. Open the startup file `your-directory/startup.bat` in a text editor and 
 absolute path of your copy of the repository, e.g. the absolute path of `your-directory`. Mine is
 `c:/users/leems/coding/projects/arxiv-daemon`
 
-Step 4. Create a shortcut to startup.bat and place it in your startup scripts folder. To open this on windows, press
+Step 4. Create a shortcut to `your-directory/startup.bat` and place it in your startup scripts folder. To open this on windows, press
 Win + r and type "shell:startup"
 
 Now the next time you restart your pc, any arxiv downloads will be automatically renamed and moved.
