@@ -23,21 +23,21 @@ Examples:
 
 ## Setup
 
-1. open config.py
-    - Change SOURCE_DIR to the absolute path of your downloads directory
-    - Change TARGET_DIR to the absolute path of the directory you want your papers to be stored.
-2. Open arXivdaemon.bat and make sure the path to this project directory is correct
-3. Place arXivdaemon.bat in your startup scripts.
+It's fucked because I don't understand how computers work.
 
 ------------------------------------------------------------------------------------------------------
-## Potential Issues
+## Known Issues
 
-Older arxiv articles have a naming convention which will currently be missed by this app. It will see anything with id in the forms
+### 1. Older arxiv articles have a naming convention which will currently be missed by this app. It will see anything with id in the forms
 
 1. XXXX.XXXXX
 1. XXXX.XXXX
 
 Where 'X' is any digit. Some older articles have ids in the form arch-ive/XXXXXXX and these are not currently captured.
+
+### 2. Dashes are currently being removed if they are inside the title of the paper
+
+### 3. Right now, the app only runs by cloning the repo and running src/daemon.py with an instance of python which has installed all of the package dependencies in requirements.txt. Working on containerizing the app so that it may be built and run as a docker container.
 
 ------------------------------------------------------------------------------------------------------
 
