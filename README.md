@@ -27,13 +27,13 @@ Step 1. Clone the repository to a local directory
 
 ```git clone https://github.com/Michael-Geis/arxiv-daemon.git your-directory```
 
-Step 2. Open the config file in `your-directory/src/config.py` and make the following changes:
+Step 2. Open the config file `your-directory/src/config.py` in a text editor and make the following changes:
   - change the value of SOURCE_DIR to the absolute path of your downloads folder. For example, mine is
   `c:/users/leems/downloads`
   - change the value of TARGET_DIR to the absolute path of the directory you want to store your papers in. Mine is
   `c:/users/leems/math/papers`
 
-Step 3. Open the startup.bat file in a text editor and change the argument of the `cd` command in line 2 to be the
+Step 3. Open the startup file `your-directory/startup.bat` in a text editor and change the argument of the `cd` command in line 2 to be the
 absolute path of your copy of the repository, e.g. the absolute path of `your-directory`. Mine is
 `c:/users/leems/coding/projects/arxiv-daemon`
 
