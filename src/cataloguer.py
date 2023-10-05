@@ -1,6 +1,5 @@
 import arxiv
 import time
-import os
 from watchdog.events import FileSystemEventHandler
 import regex
 from pathlib import Path
