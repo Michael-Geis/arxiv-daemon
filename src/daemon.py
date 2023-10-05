@@ -16,7 +16,7 @@ class RenameDaemon:
         event_handler = ArXivPaperCataloguer(target_dir=self.target_dir)
         self.observer.schedule(event_handler, self.source_dir, recursive=True)
         self.observer.start()
-        print("Daemon is watching...")
+        print(f"Daemon is watching {self.source_dir}")
         try:
             while True:
                 time.sleep(5)
@@ -28,7 +28,7 @@ class RenameDaemon:
 
 
 def main():
-    # Make sure we have set directories
+    # # Make sure we have set directories
     if config.SET_DIRS_AT_RUNTIME:
         source_dir = search_for_file_path(prompt="Select your downloads directory.")
         target_dir = search_for_file_path(
