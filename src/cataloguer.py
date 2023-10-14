@@ -3,14 +3,16 @@ import time
 from watchdog.events import FileSystemEventHandler
 import regex
 from pathlib import Path
-from cleantext import clean
+from namelogic import format_file_name
+from duplicatehandler import DuplicateHandler
 
 
 ## Event handler class which recieves any 'FileCreated' event in config.SOURCE_DIR
 class ArXivPaperCataloguer(FileSystemEventHandler):
-    def __init__(self, target_dir):
+    def __init__(self, target_dir, on_duplicate):
         super().__init__()
         self.target_dir = target_dir
+        self.duplicate_handler = DuplicateHandler(on_duplicate)
 
     def on_created(self, event):
         """Processed triggered by a new file appearing in SOURCE_DIR.
@@ -40,7 +42,10 @@ class ArXivPaperCataloguer(FileSystemEventHandler):
                 id
             )  ## Retrieves metadata and formats new filename
             new_path = Path(self.target_dir) / Path(new_name)
-            path.rename(new_path)
+            try:
+                path.rename(new_path)
+            except FileExistsError:
+                self.duplicate_handler.handle_duplicate(path=path, new_path=new_path)
 
     def is_arxiv(self, path):
         """Determines if a path represents a downloaded pdf of an arXiv paper.
@@ -71,23 +76,4 @@ class ArXivPaperCataloguer(FileSystemEventHandler):
         title = result.title
         authors = [author.name for author in result.authors]
 
-        return self.format_file_name(title, authors)
-
-    def format_file_name(self, title, authors):
-        """Returns formatted filename from the title and list of authors. Isolated step containing the naming logic.
-
-        Args:
-            title: title of the article returned by arXiv API query.
-            authors: list of authors of the article returned by arXiv API query.
-
-        Returns:
-            string in the form desired_file_name.pdf.
-        """
-        clean_title = clean(
-            title, fix_unicode=True, to_ascii=True, lower=True, no_punct=True
-        ).replace(" ", "-")
-        lower_last_names = [name.split(" ")[-1].lower() for name in authors]
-        author_preamble = "-".join(lower_last_names[:3])
-        new_file_name = author_preamble + "-" + clean_title + ".pdf"
-
-        return new_file_name
+        return format_file_name(title, authors)

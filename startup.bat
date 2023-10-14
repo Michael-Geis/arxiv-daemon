@@ -1,3 +1,3 @@
 @echo off
-cd /path/to/app/dir
-venv/scripts/pythonw.exe src/daemon.py
+cd %ARXIV_DAEMON_PATH%
+cmd /c "%ARXIV_DAEMON_PATH%\venv\scripts\pythonw.exe %ARXIV_DAEMON_PATH%\src\daemon.py"
